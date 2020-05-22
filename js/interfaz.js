@@ -19,7 +19,7 @@ class Interfaz {
 
         cats.forEach(categorie => {
           const option = document.createElement('option');
-          option.value = categorie.value;
+          option.value = categorie.id;
           option.appendChild(document.createTextNode(categorie.name_localized))
           selectCategorie.appendChild(option)
         })
