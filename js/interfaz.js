@@ -7,9 +7,22 @@ class Interfaz {
     this.list = document.getElementById('resultado-eventos');
   }
   init() {
+    this.printCategories();
   }
   printCategories() {
     const categoriesList = eventbrite.getCategories();
-    console.log(categoriesList);
+    categoriesList
+      .then(res => {
+        const cats = res.categories.categories;
+        console.log(cats);
+        const selectCategorie = document.getElementById('listado-categorias');
+
+        cats.forEach(categorie => {
+          const option = document.createElement('option');
+          option.value = categorie.value;
+          option.appendChild(document.createTextNode(categorie.name_localized))
+          selectCategorie.appendChild(option)
+        })
+      })
   }
 }
