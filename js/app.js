@@ -22,7 +22,7 @@ function buttonSearch(e) {
     
     searchText.value = '';
   } else {
-    console.log('No hay nada');
+    ui.showMessage('Escribe algo en el buscador', 'alert alert-danger mt-3');
   }
   searchText.focus();
 }

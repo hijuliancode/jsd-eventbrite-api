@@ -1,5 +1,6 @@
 class Interfaz {
   constructor() {
+    const searchButton = document.getElementById('buscarBtn');
     // Inicializar App
     this.init();
 
@@ -24,5 +25,20 @@ class Interfaz {
           selectCategorie.appendChild(option)
         })
       })
+  }
+  showMessage(message, cssClass) {
+    const div = document.createElement('div')
+    div.className = cssClass;
+    div.appendChild(document.createTextNode(message));
+
+    document.querySelector('#buscador').insertBefore(div, searchButton);
+
+    setTimeout(() => {
+      this.removeMessage();
+    }, 2000)
+  }
+  removeMessage() {
+    const alertMessage = document.querySelector('.alert');
+    (alertMessage) ? alertMessage.remove() : null;
   }
 }
