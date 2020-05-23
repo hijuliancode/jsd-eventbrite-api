@@ -18,7 +18,11 @@ function buttonSearch(e) {
   if(searchText !== '') {
     eventbrite.getEvents(searchText, categorieSelected)
       .then(data => {
-        console.log('=> => =>', data);
+        if(data.events.length > 0) { // Si hay eventos
+          ui.showEvents(data.events)
+        } else {
+          ui.showMessage('No hay resultados', 'alert alert-danger mt-3');
+        }
       })
       searchTextInput.value = '';
   } else {

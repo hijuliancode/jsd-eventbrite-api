@@ -41,4 +41,30 @@ class Interfaz {
     const alertMessage = document.querySelector('.alert');
     (alertMessage) ? alertMessage.remove() : null;
   }
+  cleanResults() {
+    this.list.innerHTML = '';
+  }
+  showEvents(events) {
+    this.cleanResults();
+    const eventsList = events.events;
+    eventsList.forEach((event) => {
+      this.list.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img class="img-fluid mb-2" src="${event.logo !== null ? event.logo.url : ''}" />
+            <div class="card-body">
+              <div class="card-text">
+                <h2 class="text-center">${event.name.text}<h2>
+                <p class="lead text-info">Información del evento: <p>
+                <p>${event.description.text.substring(0, 280)}...<p>
+                <span class="badge badge-primary">${event.capacity}<span>
+                <span class="badge badge-secondary">${event.start.local}<span>
+                <a href="${event.url}" target="_blank" class="btn btn-primary btn-block mt-4">Comprar Boletos<a>
+              <div>
+            <div>
+          <div>
+        <div>
+      `;
+    })
+  }
 }
